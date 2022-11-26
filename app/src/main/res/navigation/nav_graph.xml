@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.example.breakingnewsapp.presentation.screens.HomeScreenFragment"
+        android:label="HomeScreenFragment" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_articleScreenFragment"
+            app:destination="@id/articleScreenFragment"
+            app:popUpTo="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteNewsScreenFragment"
+        android:name="com.example.breakingnewsapp.presentation.screens.FavoriteNewsScreenFragment"
+        android:label="FavoriteNewsScreenFragment" />
+    <fragment
+        android:id="@+id/searchNewsScreenFragment"
+        android:name="com.example.breakingnewsapp.presentation.screens.SearchNewsScreenFragment"
+        android:label="SearchNewsScreenFragment" />
+    <fragment
+        android:id="@+id/articleScreenFragment"
+        android:name="com.example.breakingnewsapp.presentation.screens.ArticleScreenFragment"
+        android:label="ArticleScreenFragment" >
+        <argument
+            android:name="article"
+            app:argType="com.example.breakingnewsapp.data.network.dto.ArticleDto" />
+    </fragment>
+</navigation>

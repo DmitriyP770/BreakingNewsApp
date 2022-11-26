@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BreakingNewsApp</string>
+    <string name="search_field_hint">enter your query</string>
+</resources>
