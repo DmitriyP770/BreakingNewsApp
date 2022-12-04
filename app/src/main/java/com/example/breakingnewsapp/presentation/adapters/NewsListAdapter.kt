@@ -10,18 +10,19 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.breakingnewsapp.R
+import com.example.breakingnewsapp.data.models_db.ArticleCachingDao
 import com.example.breakingnewsapp.data.network.dto.ArticleDto
 import com.example.breakingnewsapp.databinding.ArticleItemBinding
 import com.example.breakingnewsapp.domain.entity.Article
 import com.example.breakingnewsapp.presentation.screens.HomeScreenFragmentDirections
 
-class NewsListAdapter : ListAdapter<ArticleDto,
+class NewsListAdapter : ListAdapter<ArticleCachingDao,
         NewsListAdapter.NewsListViewHolder>(DiffCallback) {
 
     inner class NewsListViewHolder(private val binding: ArticleItemBinding): RecyclerView.ViewHolder(
         binding.root
     ){
-        fun bind(article: ArticleDto) {
+        fun bind(article: ArticleCachingDao) {
             binding.tvDescription.text = article.description
             binding.tvPublishedAt.text = article.author
             binding.tvTitle.text = article.title
@@ -53,12 +54,12 @@ class NewsListAdapter : ListAdapter<ArticleDto,
 
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<ArticleDto> (){
-        override fun areItemsTheSame(oldItem: ArticleDto, newItem: ArticleDto): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<ArticleCachingDao> (){
+        override fun areItemsTheSame(oldItem: ArticleCachingDao, newItem: ArticleCachingDao): Boolean {
             return oldItem.urlToImage == newItem.urlToImage
         }
 
-        override fun areContentsTheSame(oldItem: ArticleDto, newItem: ArticleDto): Boolean {
+        override fun areContentsTheSame(oldItem: ArticleCachingDao, newItem: ArticleCachingDao): Boolean {
             return oldItem == newItem
         }
     }

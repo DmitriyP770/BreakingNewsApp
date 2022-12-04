@@ -1,7 +1,7 @@
 package com.example.breakingnewsapp.data.models_db
 
 data class ArticleResponse(
-    val articleDaos: List<ArticleDao>,
+    val articleFavoritesDaos: List<ArticleFavoritesDao>,
     val status: String,
     val totalResults: Int
 )

@@ -1,19 +1,19 @@
 package com.example.breakingnewsapp.domain.repository
 
+import androidx.lifecycle.LiveData
 import com.example.breakingnewsapp.core.util.Resource
-import com.example.breakingnewsapp.data.models_db.ArticleDao
-import com.example.breakingnewsapp.data.models_db.ArticleResponse
+import com.example.breakingnewsapp.data.models_db.ArticleFavoritesDao
 import com.example.breakingnewsapp.data.network.dto.ArticleResponceDto
-import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
 
 interface ArticleRepository {
 
-    suspend fun saveArticle(articleDao: ArticleDao)
+    suspend fun saveArticle(articleFavoritesDao: ArticleFavoritesDao)
 
-    suspend fun deleteArticle(articleDao: ArticleDao)
+    suspend fun deleteArticle(articleFavoritesDao: ArticleFavoritesDao)
 
-    fun getArticlesFromDb(): Flow<List<ArticleDao>>
+    fun getArticlesFromDb(): LiveData<List<ArticleFavoritesDao>>
 
-    suspend fun loadArticlesFromNetwork(): Flow<Resource<ArticleResponceDto>>
+    suspend fun loadArticlesFromNetwork(): Resource<ArticleResponceDto>
+
+    suspend fun searchArticles(query: String): Resource<ArticleResponceDto>
 }

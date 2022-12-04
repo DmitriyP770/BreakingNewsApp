@@ -1,7 +1,8 @@
 package com.example.breakingnewsapp.data.network.dto
 
 import android.os.Parcelable
-import com.example.breakingnewsapp.data.models_db.ArticleDao
+import com.example.breakingnewsapp.data.models_db.ArticleCachingDao
+import com.example.breakingnewsapp.data.models_db.ArticleFavoritesDao
 import com.example.breakingnewsapp.data.models_db.SourceDao
 import com.example.breakingnewsapp.domain.entity.Article
 import com.google.gson.annotations.SerializedName
@@ -19,8 +20,8 @@ data class ArticleDto (
     val url: String?,
     val urlToImage: String?
 ) : Parcelable {
-    fun toArticleDao(): ArticleDao {
-        return ArticleDao(
+    fun toArticleDao(): ArticleFavoritesDao {
+        return ArticleFavoritesDao(
             author = author ?: "not found",
             content = content ?: "not found",
             description = description ?: "not found",
@@ -31,12 +32,34 @@ data class ArticleDto (
             urlToImage = urlToImage ?: "not found",
             id = 0
         )
+
+    }
+
+
+
+    fun toArticle(): Article{
+        return Article(
+            author = author ?: "not found",
+            content = content ?: "not found",
+            description = description ?: "not found",
+            sourceDao = sourceDao ?: SourceDao("", ""),
+            title = title ?: "not found",
+            url = url ?: "not found",
+            urlToImage = urlToImage ?: "not found",
+        )
     }
 }
-//
-//    fun toArticle(): Article{
-//        return Article(
-//            author, content, description, title, url, urlToImage, sourceDao
-//        )
-//    }
-//}
+
+fun ArticleDto.toArticleCache(): ArticleCachingDao{
+    return ArticleCachingDao(
+        author = author ?: "not found",
+        content = content ?: "not found",
+        description = description ?: "not found",
+        sourceDao = sourceDao ?: SourceDao("", ""),
+        title = title ?: "not found",
+        url = url ?: "not found",
+        urlToImage = urlToImage ?: "not found",
+        publishedAt =  publishedAt ?: "not found",
+        id = 0
+    )
+}

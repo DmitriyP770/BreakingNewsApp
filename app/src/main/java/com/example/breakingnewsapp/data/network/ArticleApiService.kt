@@ -28,13 +28,25 @@ interface ArticleApiService {
         page: Int = 1,
         @Query("apiKey")
         apiKey: String = API_KEY,
-
-
-
     ): Response<ArticleResponceDto>
 
 
+    @GET("v2/everything")
+    suspend fun searchArticles(
+        @Query("q")
+        query: String,
+        @Query("page")
+        page: Int = 1,
+        @Query("sortBy")
+        sortType: String = "popularity",
+        @Query("apiKey")
+        apiKey: String = API_KEY,
+    ): Response<ArticleResponceDto>
+
 }
+
+
+
 
 class RetrofitInstance {
     companion object {

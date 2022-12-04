@@ -27,6 +27,6 @@
         android:label="ArticleScreenFragment" >
         <argument
             android:name="article"
-            app:argType="com.example.breakingnewsapp.data.network.dto.ArticleDto" />
+            app:argType="com.example.breakingnewsapp.data.models_db.ArticleCachingDao" />
     </fragment>
 </navigation>

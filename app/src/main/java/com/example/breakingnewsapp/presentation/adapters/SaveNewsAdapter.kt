@@ -6,21 +6,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.breakingnewsapp.data.models_db.ArticleDao
+import com.example.breakingnewsapp.data.models_db.ArticleFavoritesDao
 import com.example.breakingnewsapp.databinding.ArticleItemBinding
-import com.example.breakingnewsapp.databinding.FragmentFavoriteNewsScreenBinding
 
-class SaveNewsAdapter : ListAdapter<ArticleDao,SaveNewsAdapter.SaveNewsViewHolder>(DiffCallBack) {
+class SaveNewsAdapter : ListAdapter<ArticleFavoritesDao,SaveNewsAdapter.SaveNewsViewHolder>(DiffCallBack) {
 
     inner class SaveNewsViewHolder(private val binding: ArticleItemBinding)
         : RecyclerView.ViewHolder(binding.root){
-            fun bind(articleDao: ArticleDao){
+            fun bind(articleFavoritesDao: ArticleFavoritesDao){
                 with(binding){
-                    Glide.with(itemView).load(articleDao.urlToImage).into(ivArticleImage)
-                    tvDescription.text = articleDao.description
-                    tvPublishedAt.text = articleDao.publishedAt
-                    tvTitle.text = articleDao.title
-                    tvSource.text = articleDao.url
+                    Glide.with(itemView).load(articleFavoritesDao.urlToImage).into(ivArticleImage)
+                    tvDescription.text = articleFavoritesDao.description
+                    tvPublishedAt.text = articleFavoritesDao.publishedAt
+                    tvTitle.text = articleFavoritesDao.title
+                    tvSource.text = articleFavoritesDao.url
                     executePendingBindings()
                 }
             }
@@ -41,13 +40,13 @@ class SaveNewsAdapter : ListAdapter<ArticleDao,SaveNewsAdapter.SaveNewsViewHolde
         holder.bind(article)
     }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<ArticleDao>(){
+    companion object DiffCallBack : DiffUtil.ItemCallback<ArticleFavoritesDao>(){
 
-        override fun areItemsTheSame(oldItem: ArticleDao, newItem: ArticleDao): Boolean {
+        override fun areItemsTheSame(oldItem: ArticleFavoritesDao, newItem: ArticleFavoritesDao): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ArticleDao, newItem: ArticleDao): Boolean {
+        override fun areContentsTheSame(oldItem: ArticleFavoritesDao, newItem: ArticleFavoritesDao): Boolean {
             return oldItem == newItem
         }
     }

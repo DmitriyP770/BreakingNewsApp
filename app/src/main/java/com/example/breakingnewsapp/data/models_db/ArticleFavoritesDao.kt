@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.breakingnewsapp.domain.entity.Article
 
 @Entity(tableName = "articles")
-data class ArticleDao(
+data class ArticleFavoritesDao(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
     val author: String,
@@ -16,8 +16,8 @@ data class ArticleDao(
     val title: String,
     val url: String,
     val urlToImage: String
-){
-    fun toArticle(): Article{
-        return Article(author, content, description, title, url, urlToImage, sourceDao)
-    }
+)
+
+fun ArticleFavoritesDao.toArticle(): Article{
+    return Article(author, content, description, title, url, urlToImage, sourceDao)
 }

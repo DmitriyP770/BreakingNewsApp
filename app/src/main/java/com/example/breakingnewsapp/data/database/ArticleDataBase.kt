@@ -5,11 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.breakingnewsapp.data.models_db.ArticleDao
+import com.example.breakingnewsapp.data.models_db.ArticleCachingDao
+import com.example.breakingnewsapp.data.models_db.ArticleFavoritesDao
 import com.example.breakingnewsapp.data.util.GsonParser
 import com.google.gson.Gson
 
-@Database(entities = [ArticleDao::class], version = 1)
+@Database(entities = [ArticleFavoritesDao::class, ArticleCachingDao::class], version = 2)
 @TypeConverters(Converters::class)
 abstract class ArticleDataBase : RoomDatabase() {
 
@@ -28,6 +29,7 @@ abstract class ArticleDataBase : RoomDatabase() {
                     "articles_db"
                 )
                     .addTypeConverter(Converters(GsonParser(Gson())))
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 return instance

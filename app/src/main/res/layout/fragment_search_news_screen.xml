@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_marginHorizontal="16dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/tilSearch"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:startIconDrawable="@drawable/ic_search"
+        android:hint="@string/search_field_hint">
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:id="@+id/textField"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:startIconDrawable="@drawable/ic_search"-->
-<!--        android:hint="@string/search_field_hint">-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rv_search"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
+        </androidx.recyclerview.widget.RecyclerView>
 
-<!--        </androidx.recyclerview.widget.RecyclerView>-->
+        <ProgressBar
+            android:id="@+id/pgbSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
+    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
+</layout>

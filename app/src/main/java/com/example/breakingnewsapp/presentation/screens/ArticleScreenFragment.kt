@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.breakingnewsapp.data.models_db.toFavorites
 import com.example.breakingnewsapp.databinding.FragmentArticleScreenBinding
 import com.example.breakingnewsapp.presentation.viewmodels.SaveNewsViewModel
 import com.example.breakingnewsapp.presentation.viewmodels.SaveNewsViewModelFactory
@@ -43,7 +44,7 @@ class ArticleScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.webView.loadUrl(args.article.url!!)
         binding.fab.setOnClickListener {
-            viewModel.saveNews(args.article)
+            viewModel.saveNews(args.article.toFavorites())
             Toast.makeText(requireContext(),
                 "Article has been saved",
                 Toast.LENGTH_SHORT ).show()
